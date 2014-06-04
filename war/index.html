@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>注文内容の表示</title>
+    <script type="text/javascript" src="lib.js"></script>
+        <script type="text/javascript">
+        <!--
+        function callback(request){
+            var json = eval(request.responseText);
+            var res = '';
+            if (json.length == 1){
+                res += '<tr><td>' + json[0].id +'</td></tr>';
+                res += '<tr><td>' + json[0].name +'</td></tr>';
+                res += '<tr><td>' + json[0].num +'</td></tr>';
+            } else {
+            	
+                res += '<td><a>' + json[json.length-1].name + ' さん</a></td>' + '<td><a>' +json[json.length-1].num + ' 枚</a></td>' +
+       		           '<td><a href="edit.html?id=' + json[json.length-1].id + '">注文をやり直す</td>' +
+                       '<td><a href="del.html?id=' + json[json.length-1].id + '">注文をやめる</td></tr>';
+            }
+            
+            var obj = document.getElementById("datatable");
+            obj.innerHTML = res;
+        }
+        //-->
+        
+
+
+        </script>
+  </head>
+  <body onload="getData(null);">
+    <h1>注文内容の表示</h1>
+     
+    <table id="datatable" border="1">
+      <tr>
+        <td>wait...</td>
+      </tr>
+    </table>
+    <br>
+    <div><a href="add.html">注文の追加</a></div>
+  </body>
+</html>
+
+
+
+
+
+
